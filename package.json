@@ -1,0 +1,23 @@
+{
+  "name": "classcypress",
+  "version": "1.0.0",
+  "description": "Cypress lesson",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "cypress:open": "cypress open",
+    "cypress:dashboard": "cypress run --record --key 8d3fda43-3b6d-4cbf-babb-528369bf25be --browser chrome"
+  },
+  "keywords": [
+    "cypress",
+    "test"
+  ],
+  "author": "Petros",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.3.3"
+  },
+  "dependencies": {
+    "cypress-plugin-api": "^2.11.1"
+  }
+}
