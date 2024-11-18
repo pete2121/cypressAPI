@@ -1,5 +1,5 @@
 {
-  "name": "classcypress",
+  "name": "@ecomod/classcypress",
   "version": "1.0.0",
   "description": "Cypress lesson",
   "main": "index.js",
@@ -12,12 +12,19 @@
     "cypress",
     "test"
   ],
+  "sideEffects": [
+    "cypress/e2e/*.js"
+  ],
   "author": "Petros",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^13.3.3"
+    "axe-core": "^4.10.0",
+    "cypress": "^13.15.0",
+    "cypress-axe": "^1.5.0",
+    "wick-a11y": "^1.2.2"
   },
   "dependencies": {
+    "@ecomod/classcypress": "file:",
     "cypress-plugin-api": "^2.11.1"
   }
 }

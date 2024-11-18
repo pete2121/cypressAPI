@@ -1,61 +1,34 @@
 import { bookingAPI } from "../api/bookingAPI";
 
-describe('This is my first test', () => {
-
+describe('Test API for Cypress conf', () => {
 
 const api = new bookingAPI
 
-
-    it('Get all Bookings', () => {
-     api.getBookingID(2).should((response)=> {
-      expect(response.status).to.eq(200);
-      //expect(response.body).property('firstname').to.eq('Mark')
-      //expect(response.body).property('bookingdates').property('checkin').to.eq('2019-10-25')
-
-    }); 
-})
+    it('Get All bookings', () => {
+       api.getBookings().should((response)=> {
+            expect(response.status).to.eq(200);
+         })
+        
+    });
 
 
-it('Create booking', () => {
-   api.postBooking('Petros','Plakogiannis','777','200','2023-10-10','2023-10-10','breakfast').should((response)=> {
-    expect(response.status).to.eq(200);
+    it('Get a specific booking id', () => {
+        api.getBookingID(5).then((response)=> {
+           cy.writeFile('./cypress/e2e/response.pdf', response.body, 'binary')
+           // expect(response.body).property('firstname').to.eq('Eric')
+           // expect(response.body).property('bookingdates').property('checkin').to.eq('2021-07-20')
+         })
+        
+    });
 
-    })
-})
+
+    
+    it('create a booking', () => {
+        api.postBooking("Petros","Plakogiannis","111","true","2024-3-3","2024-3-5","Breakfrast").should((response)=> {
+            expect(response.status).to.eq(200); 
+         })
+        
+    });
 
 
-
-it('Create token', () => {
-        cy.api('POST','https://restful-booker.herokuapp.com/auth', 
-        {
-            username : "admin",
-            password : "password123"
-
-        }).then((response) =>{
-            const respoBody = response.body
-            const token = respoBody['token']
-            cy.log(token)
-        cy.api(
-
-    {
-
-       method: 'PATCH',
-       url : 'https://restful-booker.herokuapp.com/booking/2',
-       headers: {
-        'Content-Type': 'application/json',
-        'Cookie': 'token='+token
-       },
-       body: {
-
-        lastname: 'Petros Aek'
-
-       }
-    }        
-
-    )
-
-})
-
-})
-
-})
+});

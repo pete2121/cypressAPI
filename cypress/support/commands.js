@@ -23,3 +23,15 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('EnterContactDetails', (name,email,phone,message) => {
+    cy.visit('https://parabank.parasoft.com/parabank/index.htm')
+     cy.get('.contact').click()
+     cy.get('h1.title').contains('Customer Care')
+     cy.get('#name').type(name)
+     cy.get('#email').type(email)
+     cy.get('#phone').type(phone)
+     cy.get('#message').type(message)
+     cy.get('input.button').contains('Send to Customer Care').click()
+ });
+ 
